@@ -6,6 +6,7 @@ module.exports.isLoggedin = function (req, res, next) {
             req.body.token ||
             req.header('Authorization').replace('Bearer ', '')
         if (token) {
+            console.log(token);
             const decode = jwt.verify(token, process.env.token)
             if (decode) {
                 req.currentUser = decode.currentUser

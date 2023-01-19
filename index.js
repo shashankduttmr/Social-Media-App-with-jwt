@@ -15,6 +15,7 @@ const path = require('path')
 const app = express()
 const IndexRoute = require('./routes/index')
 const AuthRoute = require('./routes/Auth/auth')
+const PostRoute = require('./routes/post/home')
 
 app.use(express.static(path.join(__dirname, '/assets')))
 app.use(express.urlencoded({extended:true}))
@@ -62,6 +63,7 @@ app.use(function(req, res, next){
 
 app.use('/', IndexRoute)
 app.use('/user', AuthRoute)
+app.use('/post', PostRoute)
 // app.use('/post')
 
 

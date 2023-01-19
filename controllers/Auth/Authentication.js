@@ -33,8 +33,8 @@ module.exports.NewUser = async function (req, res, next) {
                 },
                     process.env.token,
                 )
-                token.token = token
                 const decode = jwt.verify(token, process.env.token)
+                console.log(decode);
                 res.cookie('__cu__', token, { httpOnly: true, signed: true})
                 res.cookie('_user', decode, { httpOnly: true, signed: true})
                 await user.save()
